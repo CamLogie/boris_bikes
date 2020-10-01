@@ -15,7 +15,6 @@ describe DockingStation do
 
   it 'docks something' do
     bike = Bike.new
-    # subject.release_bike
     expect(subject.dock(bike)).to eq bike
   end
 
@@ -34,6 +33,7 @@ describe DockingStation do
   describe "#dock(bike)" do
     it 'does not accept a bike if there is already one docked' do
       bike = Bike.new
+      subject.dock(bike)
       expect {subject.dock(bike)}.to raise_error(RuntimeError, 'There is already a bike in this dock')
     end
   end
