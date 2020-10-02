@@ -16,8 +16,10 @@ class DockingStation
     @bike_count
   end
 
-  def dock(bike)
+  def dock(bike, user_input)
     raise "There is already a bike in this dock" if full?
+    @bike = bike
+    report_condition(user_input)
     @bike_list << bike
     @bike_count = bike
   end
@@ -29,6 +31,11 @@ class DockingStation
      true
     else false
     end
+  end
+
+  def report_condition(user_input = 'working')
+    @user_input = user_input
+    @bike.set_condition('broken') if @user_input == 'broken'
   end
 
 end
