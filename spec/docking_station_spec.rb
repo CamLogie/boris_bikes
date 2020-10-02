@@ -33,7 +33,7 @@ describe DockingStation do
     it 'does not accept a bike if there is already one docked' do
       bike = Bike.new
       docking_station = DockingStation.new
-      20.times { docking_station.dock(Bike.new) }
+      DockingStation::DEFAULT_CAPACITY.times { docking_station.dock(Bike.new) }
       expect {docking_station.dock(bike)}.to raise_error(RuntimeError, 'There is already a bike in this dock')
     end
   end
