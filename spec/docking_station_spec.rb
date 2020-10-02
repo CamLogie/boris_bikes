@@ -38,4 +38,12 @@ describe DockingStation do
     end
   end
 
+  it 'capacity should be equal to DEFAULT_CAPACITY if there is no user_input' do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
+  it 'capacity should be equal to the capacity given by user' do
+    docking_station = DockingStation.new(25)
+    expect(docking_station.capacity).to eq 25
+  end
 end
